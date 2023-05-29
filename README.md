@@ -17,7 +17,7 @@ For Hamming codes, n = 2<sup>m</sup> - 1 and k = 2<sup>m</sup> - m - 1, where m 
 
 ## Installation
 
-`go install -u github.com/tofsi/hamming`
+`go get github.com/tofsi/hamming`
 
 ## Documentation
 
