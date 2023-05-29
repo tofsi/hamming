@@ -29,7 +29,7 @@ The following is an example of how to encode and decode data.
 
 ```go
 data := []bool{true, false, true, false, true, true, false, true}
-c := New(3)
+c := hamming.New(3)
 c.Print() // To get an overview of the code
 encodedData = c.EncodeBin(data)
 encodedData[3] = !encodedData[3] // Oh no! A flipped bit
