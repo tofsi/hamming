@@ -11,13 +11,14 @@ It is of interest to
 2. Recover the original information
 
 Hamming codes solve both of these problems by adding redundancy.
-The more redundancy is added (larger value of delta), the better the code is at detecting errors.
+Hamming codes detect two errors, and correct one error per code word.
+Notation: the Hamming code H(n, k) has code words of length n (block length) and words of length k (word length).
+For Hamming codes, n = 2<sup>m</sup> - 1 and k = 2<sup>m</sup> - m - 1, where m is a positive integer.
 
 ## Installation
 
-Not possible as of yet.
+`go install -u github.com/tofsi/hamming`
 
 ## Documentation
 
 Documentation is found in the Documentation.md file
-
