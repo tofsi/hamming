@@ -9,15 +9,15 @@ Hamming codes are characterized by the word length `w` and the minimal distance 
 ## Index
 type Code
 
-func New(w int, delta int) \*Code
+func New(m int) \*Code
 
 func (c Code) EncodeBin(x []bool) []bool
 
-func (c Code) DecodeBin(y []bool) ([]bool, "")
+func (c Code) DecodeBin(y []bool, remainder int) ([]bool, []int)
 
 func (c Code) EncodeString(x string) []bool
 
-func (c Code) DecodeString(y []bin) string 
+func (c Code) DecodeString(y []bin, rematinder int) (string, []int) 
 
 
 ## Types
@@ -34,9 +34,11 @@ Code stores the pertinent information of the error correcting code
 ### func New
 
 ```go
-func New(w int, delta int) *Code
+func New(m int) *Code
 ```
-`New` creates a new code, for a word length `w` and a minimal distance `delta`.
+`New` creates the Hamming code H(n, k) = H(2<sup>m</sup> - 1, 2<sup>m</sup> - m - 1).
+The length of words is k and the length of blocks (data and parity bits) is n.
+The code corrects one error and detects two.
 
 ### func EncodeBin
 
@@ -47,9 +49,9 @@ func (c Code) EncodeBin(x []bool) []bool
 
 ### func DecodeBin
 ```go
-func (c Code) DecodeBin(y []bool) ([]bool, "")
+func (c Code) DecodeBin(y []bool, remainder int) ([]bool, []int)
 ```
-`DecodeBin` corrects and detects errors in the sequence of code words `y` of `c` and tries to recover the original sequence of words. If there are any errors, a string with the relevant information is returned as well.
+`DecodeBin` corrects and detects errors in the sequence of code words `y` of `c` and tries to recover the original sequence of words. `remainder` is equal to the length of the message, in bits, modulo the length of one block, `c.n`. A slice containing the positions of detected errors is returned as well.
 
 ### func EncodeString
 ```go
@@ -59,6 +61,6 @@ func (c Code) EncodeString(x string) []bool
 
 ### func DecodeString
 ```go
-func (c Code) DecodeString(y []bin) string 
+func (c Code) DecodeString(y []bin) (string, []int)
 ```
-`DecodeString` corrects and detects errors in the sequence of code words `y` of `c` and tries to recover the original string, (encoded using `EncodeString`). If there are any errors, a string with the relevant information is returned as well.
+`DecodeString` corrects and detects errors in the sequence of code words `y` of `c` and tries to recover the original string, (encoded using `EncodeString`). `remainder` is equal to the length of the message, in bits, modulo the length of one block, `c.n`. A slice containing the positions of characters in which errors where detected is also returned.
