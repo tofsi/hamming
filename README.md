@@ -34,7 +34,7 @@ c.Print() // To get an overview of the code
 encodedData := c.EncodeBin(data)
 encodedData[3] = !encodedData[3] // Oh no! A flipped bit
 decodedData, bitFlips := c.DecodeBin(encodedData, 0) // If working with H(7, 4) and
-                                                    // bytes, remainder is always 0
+                                                     // bytes, remainder is always 0
 fmt.Println("Original Data:")
 fmt.Println(data)
 fmt.Println("Detected errors in bits:")
