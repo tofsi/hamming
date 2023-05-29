@@ -31,9 +31,9 @@ The following is an example of how to encode and decode data.
 data := []bool{true, false, true, false, true, true, false, true}
 c := hamming.New(3)
 c.Print() // To get an overview of the code
-encodedData = c.EncodeBin(data)
+encodedData := c.EncodeBin(data)
 encodedData[3] = !encodedData[3] // Oh no! A flipped bit
-decodedData, bitFlips = c.DecodeBin(encodedData, 0) // If working with H(7, 4) and
+decodedData, bitFlips := c.DecodeBin(encodedData, 0) // If working with H(7, 4) and
                                                     // bytes, remainder is always 0
 fmt.Println("Original Data:")
 fmt.Println(data)
